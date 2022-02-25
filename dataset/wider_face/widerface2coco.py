@@ -49,15 +49,20 @@ def conver(dataclass='train'):
                         i_l += 1
                         x1, y1, wid, hei = list(map(int, lines[i_l].split()))[:4]
                         num_gt -= 1
-                        dataset["annotations"].append({
-                            "segmentation": [],
-                            "iscrowd": 0,
-                            "area": wid * hei,
-                            "image_id": img_id,
-                            "bbox": [x1, y1, wid, hei],
-                            "category_id": 1,
-                            "id": anno_id})
-                        anno_id = anno_id + 1
+
+                        if wid <= 0 or hei <= 0:
+                            print(f'图像id:{img_id}有无效标注:x1={x1},wid={wid},y1={y1},hei={hei}')
+
+                        else:
+                            dataset["annotations"].append({
+                                "segmentation": [],
+                                "iscrowd": 0,
+                                "area": wid * hei,
+                                "image_id": img_id,
+                                "bbox": [x1, y1, wid, hei],
+                                "category_id": 1,
+                                "id": anno_id})
+                            anno_id = anno_id + 1
 
                     img_id += 1
                 else:
@@ -70,9 +75,9 @@ def conver(dataclass='train'):
         json.dump(dataset, f)
 
 
-print('开始转换...')
+print('开始转换,并清除无效标注...')
 conver('train')
 print('训练集转换完毕')
 conver('val')
-print('测试集转换完毕')
+print('验证集转换完毕')
 
