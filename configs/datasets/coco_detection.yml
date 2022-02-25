@@ -1,19 +1,36 @@
 metric: COCO
-num_classes: 80
+num_classes: 1  #不含背景类
+
+#TrainDataset:
+#  !COCODataSet
+#    image_dir: train2017
+#    anno_path: annotations/instances_train2017.json
+#    dataset_dir: dataset/coco
+#    data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+#
+#EvalDataset:
+#  !COCODataSet
+#    image_dir: val2017
+#    anno_path: annotations/instances_val2017.json
+#    dataset_dir: dataset/coco
+#
+#TestDataset:
+#  !ImageFolder
+#    anno_path: annotations/instances_val2017.json
 
 TrainDataset:
   !COCODataSet
-    image_dir: train2017
-    anno_path: annotations/instances_train2017.json
-    dataset_dir: dataset/coco
+    image_dir: WIDER_train/images   # 训练图像数据基于数据集根目录的相对路径
+    anno_path: WIDERFaceTrainCOCO.json  # 训练标注文件基于数据集根目录的相对路径
+    dataset_dir: dataset/wider_face # 数据集根目录
     data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
 
 EvalDataset:
   !COCODataSet
-    image_dir: val2017
-    anno_path: annotations/instances_val2017.json
-    dataset_dir: dataset/coco
+    image_dir: WIDER_val/images     # 测试图像数据基于数据集根目录的相对路径
+    anno_path: WIDERFaceValCOCO.json     # 测试标注文件基于数据集根目录的相对路径
+    dataset_dir: dataset/wider_face
 
 TestDataset:
   !ImageFolder
-    anno_path: annotations/instances_val2017.json
+    anno_path: WIDERFaceValCOCO.json
