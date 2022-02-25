@@ -6,7 +6,7 @@ LearningRate:
   - !PiecewiseDecay
     gamma: 0.1
     milestones:
-    - 243
+    - 30.375    #243
   - !LinearWarmup
     start_factor: 0.
     steps: 4000
