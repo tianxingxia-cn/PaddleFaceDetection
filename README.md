@@ -84,7 +84,7 @@ python  tools/train.py -c configs/face_detection/ppyface_r50vd_dcn_365e_coco.yml
 
 ### 第五步：进行评估
 ```bash
-!python tools/eval.py -c configs/face_detection/ppyoloface_r50vd_dcn_365e_coco.yml  -o use_gpu=true
+python tools/eval.py -c configs/face_detection/ppyoloface_r50vd_dcn_365e_coco.yml  -o use_gpu=true
 ```
 由于完整的wider-face还没训练完毕，先放一个先前训练模型,来源[作业三](https://aistudio.baidu.com/aistudio/projectdetail/3521764)评估信息：
 ```textmate
@@ -109,6 +109,25 @@ DONE (t=0.07s).
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.733
 [02/23 12:10:13] ppdet.engine INFO: Total sample number: 92, averge FPS: 31.507607409541855
 ```
+
+### 第六步：开始预测
+
+单张图片预测：
+```bash
+python tools/infer.py -c configs/ppyolo/ppyolov2_r50vd_dcn_365e_coco.yml -o \
+use_gpu=true weights=output/ppyolov2_r50vd_dcn_365e_coco/model_final.pdparams  \
+--infer_img=demo/000000014439.jpg
+```
+
+多张图片一起预测：
+```bash
+python tools/infer.py -c configs/ppyolo/ppyolov2_r50vd_dcn_365e_coco.yml -o \
+use_gpu=true weights=output/ppyolov2_r50vd_dcn_365e_coco/model_final.pdparams  \
+--infer_dir=demo2
+```
+
+
+
 
 
 
