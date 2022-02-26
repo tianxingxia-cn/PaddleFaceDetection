@@ -33,4 +33,4 @@ EvalDataset:
 
 TestDataset:
   !ImageFolder
-    anno_path: WIDERFaceValCOCO.json
+    anno_path: dataset/wider_face/WIDERFaceValCOCO.json # 这里路径一定要正确，如果文件不存在采用COCO17的分类，自定义分类face就无效。
