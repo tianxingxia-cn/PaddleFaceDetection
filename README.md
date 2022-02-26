@@ -118,16 +118,22 @@ python tools/infer.py -c configs/ppyolo/ppyolov2_r50vd_dcn_365e_coco.yml -o \
 use_gpu=true weights=output/ppyolov2_r50vd_dcn_365e_coco/model_final.pdparams  \
 --infer_img=demo/000000014439.jpg
 ```
-
+ ![](https://ai-studio-static-online.cdn.bcebos.com/3a13ab9d27124116bff74abb7023b701a5b1e37c31e44494a15a796c0d5cff77)
+ 
+ ![](https://ai-studio-static-online.cdn.bcebos.com/c679c79696b84845a8a7de40d128a157d9f54ab5a4794ffc867a60719c3c5b23)
+ 
 多张图片一起预测：
 ```bash
 python tools/infer.py -c configs/ppyolo/ppyolov2_r50vd_dcn_365e_coco.yml -o \
 use_gpu=true weights=output/ppyolov2_r50vd_dcn_365e_coco/model_final.pdparams  \
 --infer_dir=demo2
 ```
+ ![](https://ai-studio-static-online.cdn.bcebos.com/9173f47cb63f44b49bc8bee07958e261d1924a43365d42e186d889ecadd92248)
+ ![](https://ai-studio-static-online.cdn.bcebos.com/d299998408e7408d937b3b27a24ccb65a8ce18a8732644a1b56cb35266836435)
 
 
 
+## 4. 其他
 
-
-
+关于本项目的详细内容，欢迎访问:[【AI达人创造营第二期】以PP-YOLO v2模型快速实现人脸检测](https://aistudio.baidu.com/aistudio/projectdetail/3525442)
+在AI Studio每天都免费硬件资源可以用哟！
